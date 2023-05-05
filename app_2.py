@@ -159,7 +159,12 @@ with tab2:
 
 #    proba = model.predict(answers_to_predict)[:,1][0]
 
-    proba = model.predict(answers_to_predict)[:,1]
+    proba = model.predict(answers_to_predict)
+    
+    print("AAAA")
+    print(proba)
+    print("BBBB")
+    
     score = round(proba * 100)
     if is_submitted:
         if proba >= 0.5:
