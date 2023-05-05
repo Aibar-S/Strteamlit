@@ -66,8 +66,8 @@ df_raw = download_data('data/ROP_DataSet.csv')
 df = preprocess_data(df_raw)
 
 
-y = df_scaled[['Rate Of Penetration']]
-X = df_scaled.drop(['Rate Of Penetration'], axis=1)
+y = df[['Rate Of Penetration']]
+X = df.drop(['Rate Of Penetration'], axis=1)
 
 
 mcal1, mcol2, mcol3 = st.columns(3)
