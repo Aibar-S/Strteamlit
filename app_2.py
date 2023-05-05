@@ -75,16 +75,6 @@ mcal1.metric("Rows", df.shape[0])
 mcol2.metric("Features", df.shape[1] - 1)
 mcol3.metric("Target = Yes", f"{round(df[TARGET].value_counts(normalize=True)[0] * 100, 1)} %")
 
-
-
-
-
-
-
-y_pred_train=SVM.predict(X_train)
-y_pred_test=SVM.predict(X_test)
-
-
 tab1, tab2 = st.tabs(["Pulse", "Prediction"])
 
 with tab1:
