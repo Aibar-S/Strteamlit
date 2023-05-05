@@ -21,12 +21,12 @@ from sklearn.ensemble import ExtraTreesRegressor
 """
 
 TARGET = 'Rate Of Penetration'
-LABELS = {
-    1: 'Low',
-    2: 'Medium',
-    3: 'High',
-    4: 'Very High'
-}
+#LABELS = {
+#    1: 'Low',
+#    2: 'Medium',
+#    3: 'High',
+#    4: 'Very High'
+#}
 
 @st.cache_data
 def download_data(path: str) -> pd.DataFrame:
@@ -157,7 +157,8 @@ with tab2:
 
     model = download_model(X,y)
 
-    proba = model.predict(answers_to_predict)[:,1][0]
+#    proba = model.predict(answers_to_predict)[:,1][0]
+    proba = model.predict(answers_to_predict)
     score = round(proba * 100)
     if is_submitted:
         if proba >= 0.5:
