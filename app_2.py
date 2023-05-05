@@ -58,7 +58,7 @@ def download_model(X, y):
         seed=1000
         np.random.seed(seed)
         SVM = SVR(kernel='rbf', gamma=1.5,C=5)
-        model = SVM.fit(X, y)
+        model = SVM.fit(X, np.ravel(y))
         joblib.dump(model, 'model.joblib')
         return model
 
@@ -154,6 +154,8 @@ with tab1:
 with tab2:
 
     answers_to_predict = pd.DataFrame(answers, index=[0])
+    
+    print(answers_to_predict)
 
     model = download_model(X,y)
 
