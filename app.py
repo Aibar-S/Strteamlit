@@ -68,7 +68,7 @@ def download_model(X, y):
         joblib.dump(model, 'model.joblib')
         return model
 
-df_raw = download_data('streamlit/data/HR_employee_attrition.csv')
+df_raw = download_data('data/HR_employee_attrition.csv')
 df = preprocess_data(df_raw)
 
 final_features = [
