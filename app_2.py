@@ -20,7 +20,7 @@ from sklearn.ensemble import ExtraTreesRegressor
 ### Prediction of ROP (Rate of Penetration) of the rock during drilling of wells
 """
 
-TARGET = 'Attrition'
+TARGET = 'Rate Of Penetration'
 LABELS = {
     1: 'Low',
     2: 'Medium',
