@@ -158,6 +158,8 @@ with tab2:
     model = download_model(X,y)
 
 #    proba = model.predict(answers_to_predict)[:,1][0]
+    print(answers_to_predict)
+
     proba = model.predict(answers_to_predict)
     score = round(proba * 100)
     if is_submitted:
