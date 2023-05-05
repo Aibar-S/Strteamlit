@@ -159,7 +159,7 @@ with tab2:
 
 #    proba = model.predict(answers_to_predict)[:,1][0]
 
-    proba = model.predict(answers_to_predict)
+    proba = model.predict(answers_to_predict)[0]
     
     print("AAAA")
     print(proba)
