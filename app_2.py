@@ -161,11 +161,7 @@ with tab2:
 
     proba = model.predict(answers_to_predict)[0]
     
-    print("AAAA")
-    print(proba)
-    print("BBBB")
-    
-    score = round(proba * 100)
+    score = proba
     if is_submitted:
         if proba >= 0.5:
             st.error("ATTENTION!")
