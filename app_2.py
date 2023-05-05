@@ -38,32 +38,15 @@ def download_data(path: str) -> pd.DataFrame:
 def preprocess_data(df_raw: pd.DataFrame) -> pd.DataFrame:
     """Preprocesses dataset"""
     df = df_raw.copy()
+    
+    
+    scaler=preprocessing.MinMaxScaler(feature_range=(0,1))
+    scaler.fit(df)
+    df_scaled=scaler.transform(df)
 
-    bad_predictors = [
-        'EmployeeCount', 'EmployeeNumber', 'Gender', 'MaritalStatus', 'Over18', 'StandardHours',
-    ]
-
-    df = df.drop(columns=bad_predictors)
-
-    df[TARGET] = df[TARGET] == 'Yes'
-    df = df.replace(["Manager", "Research Director", "Manufacturing Director"], "People Manager")
-    df['IsPeopleManager'] = df.JobRole == 'People Manager'
-    df['OverTime'] = df['OverTime'] == 'Yes'
-    df = df.replace({"BusinessTravel": {"Non-Travel": 0, "Travel_Rarely": 1, "Travel_Frequently": 2}})
-    df['AgeGroup'] = pd.cut(df.Age, bins=[18, 30, 40, 50, 60, 70], include_lowest=True, labels=[1,2,3,4,5])
-
-    unselected_features = [
-        'Age', 'TrainingTimesLastYear', 'JobRole', 
-        'EducationField', 'Department', 'YearsWithCurrManager',
-        'MonthlyIncome', 'MonthlyRate', 'HourlyRate', 'DailyRate', 'PercentSalaryHike',
-        'NumCompaniesWorked', 'TotalWorkingYears',
-        'YearsAtCompany', 'YearsInCurrentRole', 'YearsSinceLastPromotion',
-        'DistanceFromHome', 'StockOptionLevel', 'BusinessTravel',
-    ]
-
-    df = df.drop(columns=unselected_features)
-
-    return df
+    df_scaled=pd.DataFrame(df_scaled, columns=['Hole Depth', 'Hook Load', 'Rotary RPM', 'Rotary Torque', 'Weight on Bit', 'Differential Pressure', 'Gamma at Bit', 'Rate Of Penetration'])
+    
+    return df_scaled
 
 @st.cache_data
 def download_model(X, y):
@@ -72,25 +55,35 @@ def download_model(X, y):
         model = joblib.load('model.joblib')
         return model
     except:
-        model = RandomForestClassifier().fit(X, y)
+        seed=1000
+        np.random.seed(seed)
+        SVM = SVR(kernel='rbf', gamma=1.5,C=5)
+        model = SVM.fit(X, y)
         joblib.dump(model, 'model.joblib')
         return model
 
 df_raw = download_data('data/ROP_DataSet.csv')
 df = preprocess_data(df_raw)
 
-final_features = [
-    'Education', 'IsPeopleManager', 'AgeGroup', 'JobLevel', 
-    'EnvironmentSatisfaction','JobInvolvement', 'JobSatisfaction',
-    'PerformanceRating', 'RelationshipSatisfaction','WorkLifeBalance','OverTime',
-]
 
-X, y = df[final_features], df[TARGET]
+y = df_scaled[['Rate Of Penetration']]
+X = df_scaled.drop(['Rate Of Penetration'], axis=1)
+
 
 mcal1, mcol2, mcol3 = st.columns(3)
 mcal1.metric("Rows", df.shape[0])
 mcol2.metric("Features", df.shape[1] - 1)
 mcol3.metric("Target = Yes", f"{round(df[TARGET].value_counts(normalize=True)[0] * 100, 1)} %")
+
+
+
+
+
+
+
+y_pred_train=SVM.predict(X_train)
+y_pred_test=SVM.predict(X_test)
+
 
 tab1, tab2 = st.tabs(["Pulse", "Prediction"])
 
@@ -98,37 +91,57 @@ with tab1:
     # Questionnaire
     spinner = st.empty()
     form = st.form("pulse")
-    env_satisfaction = form.select_slider(
-        'How satisfied are you with the job environment?',
-        format_func = lambda x: LABELS.get(x),
-        options=[1, 2, 3, 4],
-    )
+    #form = st.form(key='submit_form')
+    
+#    Hole_Depth = form.select_slider(
+#        'How satisfied are you with the job environment?',
+#        format_func = lambda x: LABELS.get(x),
+#        options=[1, 2, 3, 4],
+#    )
 
-    job_involvement = form.select_slider(
-        'How would you describe your level of job involvement?',
-        format_func = lambda x: LABELS.get(x),
-        options=[1, 2, 3, 4],
-    )
+    Hole_Depth = st.number_input("Hole Depth")
+    Hook_Load = st.number_input("Hook Load")
+    Rotary_RPM = st.number_input("Rotary RPM")
+    Rotary_Torque = st.number_input("Rotary Torque")
+    Weight_on_Bit = st.number_input("Weight on Bit")
+    Differential_Pressure = st.number_input("Differential Pressure")
+    Gamma_at_Bit = st.number_input("Gamma at Bit")
 
-    job_satisfaction = form.select_slider(
-        'How satisfied are you with the job?',
-        format_func = lambda x: LABELS.get(x),
-        options=[1, 2, 3, 4]
-    )
-
-    relationship_satisfaction = form.select_slider(
-        'How satisfied are you with the relationships at work with colleagues?',
-        format_func = lambda x: LABELS.get(x),
-        options=[1, 2, 3, 4]
-    )
-
-    work_life_balance = form.select_slider(
-        'How would you describe your level of work-life balance?',
-        format_func = lambda x: LABELS.get(x),
-        options=[1, 2, 3, 4]
-    )
-
-    is_overtime = form.checkbox('Do you work over-time?')
+#    Hook_Load = form.select_slider(
+#        'How would you describe your level of job involvement?',
+#        format_func = lambda x: LABELS.get(x),
+#        options=[1, 2, 3, 4],
+#    )
+#
+#    Rotary_RPM = form.select_slider(
+#        'How satisfied are you with the job?',
+#        format_func = lambda x: LABELS.get(x),
+#        options=[1, 2, 3, 4]
+#    )
+#
+#    Rotary_Torque = form.select_slider(
+#        'How satisfied are you with the relationships at work with colleagues?',
+#        format_func = lambda x: LABELS.get(x),
+#        options=[1, 2, 3, 4]
+#    )
+#
+#    Weight_on_Bit = form.select_slider(
+#        'How would you describe your level of work-life balance?',
+#        format_func = lambda x: LABELS.get(x),
+#        options=[1, 2, 3, 4]
+#    )
+#
+#    Differential_Pressure = form.select_slider(
+#        'How would you describe your level of work-life balance?',
+#        format_func = lambda x: LABELS.get(x),
+#        options=[1, 2, 3, 4]
+#    )
+#
+#    Gamma_at_Bit = form.select_slider(
+#        'How would you describe your level of work-life balance?',
+#        format_func = lambda x: LABELS.get(x),
+#        options=[1, 2, 3, 4]
+#    )
 
     is_submitted = form.form_submit_button("Submit")
 
@@ -138,17 +151,13 @@ with tab1:
         st.success('Prediction is made!')
 
     answers = {
-        'Education': 4,
-        'IsPeopleManager': False,
-        'AgeGroup': 2,
-        'JobLevel': 2,
-        'EnvironmentSatisfaction': env_satisfaction,
-        'JobInvolvement': job_involvement,
-        'JobSatisfaction': job_satisfaction,
-        'PerformanceRating': 3,
-        'RelationshipSatisfaction': relationship_satisfaction,
-        'WorkLifeBalance': work_life_balance,
-        'OverTime': is_overtime,
+        'Hole Depth': Hole_Depth,
+        'Hook Load': Hook_Load,
+        'Rotary RPM': Rotary_RPM,
+        'Rotary Torque': Rotary_Torque,
+        'Weight on Bit': Weight_on_Bit,
+        'Differential Pressure': Differential_Pressure,
+        'Gamma at Bit': Gamma_at_Bit,
     }
 
 
@@ -158,7 +167,7 @@ with tab2:
 
     model = download_model(X,y)
 
-    proba = model.predict_proba(answers_to_predict)[:,1][0]
+    proba = model.predict(answers_to_predict)[:,1][0]
     score = round(proba * 100)
     if is_submitted:
         if proba >= 0.5:
