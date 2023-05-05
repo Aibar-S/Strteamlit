@@ -1,5 +1,3 @@
-#Aibar
-
 import streamlit as st
 import pandas as pd
 import joblib
@@ -9,7 +7,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 
 """
-### IBM HR Analytics Employee Attrition & Performance
+### Prediction of ROP (Rate of Penetration) of the rock during drilling of wells
 """
 
 TARGET = 'Attrition'
@@ -68,7 +66,7 @@ def download_model(X, y):
         joblib.dump(model, 'model.joblib')
         return model
 
-df_raw = download_data('data/HR_employee_attrition.csv')
+df_raw = download_data('data/ROP_DataSet.csv')
 df = preprocess_data(df_raw)
 
 final_features = [
