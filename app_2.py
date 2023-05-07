@@ -46,7 +46,7 @@ def preprocess_data(df_raw: pd.DataFrame) -> pd.DataFrame:
 
     df_scaled=pd.DataFrame(df_scaled, columns=['Hole Depth', 'Hook Load', 'Rotary RPM', 'Rotary Torque', 'Weight on Bit', 'Differential Pressure', 'Gamma at Bit', 'Rate Of Penetration'])
     
-    return df_scaled
+    return df_scaled, scaler
 
 @st.cache_data
 def download_model(X, y):
@@ -63,7 +63,7 @@ def download_model(X, y):
         return model
 
 df_raw = download_data('data/ROP_DataSet.csv')
-df = preprocess_data(df_raw)
+df, scaler = preprocess_data(df_raw)
 
 
 y = df[['Rate Of Penetration']]
