@@ -39,16 +39,18 @@ def preprocess_data(df_raw: pd.DataFrame) -> pd.DataFrame:
     """Preprocesses dataset"""
     df = df_raw.copy()
     
+    X = df.drop(['Rate Of Penetration'], axis=1)
     
     scaler=preprocessing.MinMaxScaler(feature_range=(0,1))
-    scaler.fit(df)
-    df_scaled=scaler.transform(df)
+    scaler.fit(X)
+    df_scaled=scaler.transform(X)
 
-    df_scaled=pd.DataFrame(df_scaled, columns=['Hole Depth', 'Hook Load', 'Rotary RPM', 'Rotary Torque', 'Weight on Bit', 'Differential Pressure', 'Gamma at Bit', 'Rate Of Penetration'])
+    df_scaled=pd.DataFrame(df_scaled, columns=['Hole Depth', 'Hook Load', 'Rotary RPM', 'Rotary Torque', 'Weight on Bit', 'Differential Pressure', 'Gamma at Bit'])
     
+    y = df[['Rate Of Penetration']]
+    X = df_scaled
     
-
-    return df_scaled, scaler
+    return y, X, scaler
 
 @st.cache_data
 def download_model(X, y):
@@ -65,11 +67,11 @@ def download_model(X, y):
         return model
 
 df_raw = download_data('data/ROP_DataSet.csv')
-df, scaler = preprocess_data(df_raw)
+y, X, scaler = preprocess_data(df_raw)
 
-
-y = df[['Rate Of Penetration']]
-X = df.drop(['Rate Of Penetration'], axis=1)
+#df, scaler = preprocess_data(df_raw)
+#y = df[['Rate Of Penetration']]
+#X = df.drop(['Rate Of Penetration'], axis=1)
 
 
 mcal1, mcol2, mcol3 = st.columns(3)
@@ -150,7 +152,6 @@ with tab1:
         'Weight on Bit': Weight_on_Bit,
         'Differential Pressure': Differential_Pressure,
         'Gamma at Bit': Gamma_at_Bit,
-        'Rate Of Penetration': 0,
     }
 
 
@@ -160,16 +161,13 @@ with tab2:
     
     scaled_answers_to_predict=scaler.transform(answers_to_predict)
     
-    scaled_answers_to_predict=pd.DataFrame(scaled_answers_to_predict, columns=['Hole Depth', 'Hook Load', 'Rotary RPM', 'Rotary Torque','Weight on Bit', 'Differential Pressure', 'Gamma at Bit','Rate Of Penetration'])
-    x_scaled_answers_to_predict=scaled_answers_to_predict.drop(['Rate Of Penetration'],axis=1)
-    
-    print(answers_to_predict)
+    scaled_answers_to_predict=pd.DataFrame(scaled_answers_to_predict, columns=['Hole Depth', 'Hook Load', 'Rotary RPM', 'Rotary Torque','Weight on Bit', 'Differential Pressure', 'Gamma at Bit'])
 
     model = download_model(X,y)
 
 #    proba = model.predict(answers_to_predict)[:,1][0]
 
-    proba = model.predict(x_scaled_answers_to_predict)[0]
+    proba = model.predict(scaled_answers_to_predict)[0]
     
     score = proba
     if is_submitted:
