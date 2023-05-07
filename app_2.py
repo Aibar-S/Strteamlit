@@ -148,6 +148,7 @@ with tab1:
         'Weight on Bit': Weight_on_Bit,
         'Differential Pressure': Differential_Pressure,
         'Gamma at Bit': Gamma_at_Bit,
+        'Rate Of Penetration': 0,
     }
 
 
@@ -155,13 +156,18 @@ with tab2:
 
     answers_to_predict = pd.DataFrame(answers, index=[0])
     
+    scaled_answers_to_predict=scaler.transform(answers_to_predict)
+    
+    scaled_answers_to_predict=pd.DataFrame(scaled_answers_to_predict, columns=['Hole Depth', 'Hook Load', 'Rotary RPM', 'Rotary Torque','Weight on Bit', 'Differential Pressure', 'Gamma at Bit','Rate Of Penetration'])
+    x_scaled_answers_to_predict=scaled_answers_to_predict.drop(['Rate Of Penetration'],axis=1)
+    
     print(answers_to_predict)
 
     model = download_model(X,y)
 
 #    proba = model.predict(answers_to_predict)[:,1][0]
 
-    proba = model.predict(answers_to_predict)[0]
+    proba = model.predict(x_scaled_answers_to_predict)[0]
     
     score = proba
     if is_submitted:
