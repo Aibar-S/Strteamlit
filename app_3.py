@@ -171,13 +171,8 @@ with tab2:
     
     score = proba
     if is_submitted:
-        if proba >= 0.5:
-            st.error("ATTENTION!")
-            st.snow()
-            st.metric('Probability of leaving: ', f'{score} %')
-        else:
-            st.success("GREAT")
-            st.balloons()
-            st.metric('Probability of leaving: ', f'{score} %')
+        st.success("GREAT")
+        st.balloons()
+        st.metric('The rate of penetration for provided drilling data is: ', f'{score} %')
     else:
         st.error("Submit questionnaire")
