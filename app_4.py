@@ -160,11 +160,12 @@ with tab2:
     
     y_pred_train = model.predict(X)
     
-    plt.figure(figsize=(6,12))
-    sns.scatterplot(df_raw['Rate Of Penetration'], df_raw['Hole Depth'],
-    label='Actual Blind Data', color='blue')
-    sns.scatterplot(y_pred_train, df_raw['Hole Depth'],
-    label='Predicted Blind Data', color='green')
+    if is_submitted:
+        plt.figure(figsize=(6,12))
+        sns.scatterplot(df_raw['Rate Of Penetration'], df_raw['Hole Depth'],
+        label='Actual Blind Data', color='blue')
+        sns.scatterplot(y_pred_train, df_raw['Hole Depth'],
+        label='Predicted Blind Data', color='green')
 
 with tab3:
 
