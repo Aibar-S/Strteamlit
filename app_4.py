@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.express as px
 
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
@@ -158,18 +159,31 @@ with tab2:
 
     model = download_model(X,y)
     
+    df_plot = df_raw.copy()
+    
+    
     y_pred_train = model.predict(X)
     
+    df_plot["y_pred_train"] = y_pred_train
+    
+    fig = px.scatter(
+    df_plot,
+    x="Rate Of Penetration",
+    y="Hole Depth",
+    size="pop",
+    color="continent")
+
     if is_submitted:
-        plt.figure(figsize=(6,12))
-        print()
-        plt.scatter(df_raw['Rate Of Penetration'], df_raw['Hole Depth'], c ="blue", label = "Actual Data")
-        plt.scatter(y_pred_train, df_raw['Hole Depth'], c ="green", label = "Predicted Data")
-        plt.xlabel("Rate Of Penetration, ft/hr")
-        plt.ylabel("Measured Depth (MD), ft")
-        plt.legend()
-        plt.title("ROP vs MD")
-        plt.show()
+        st.plotly_chart(fig, theme=None, use_container_width=True)
+#        plt.figure(figsize=(6,12))
+#        print()
+#        plt.scatter(df_raw['Rate Of Penetration'], df_raw['Hole Depth'], c ="blue", label = "Actual Data")
+#        plt.scatter(y_pred_train, df_raw['Hole Depth'], c ="green", label = "Predicted Data")
+#        plt.xlabel("Rate Of Penetration, ft/hr")
+#        plt.ylabel("Measured Depth (MD), ft")
+#        plt.legend()
+#        plt.title("ROP vs MD")
+#        plt.show()
 
 
 with tab3:
