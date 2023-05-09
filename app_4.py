@@ -162,8 +162,14 @@ with tab2:
     
     if is_submitted:
         plt.figure(figsize=(6,12))
-        sns.scatterplot(df_raw['Rate Of Penetration'], df_raw['Hole Depth'], label='Actual Blind Data', color='blue')
-        sns.scatterplot(y_pred_train, df_raw['Hole Depth'], label='Predicted Blind Data', color='green')
+        plt.scatter(df_raw['Rate Of Penetration'], df_raw['Hole Depth'], c ="blue", label = "Actual Data")
+        plt.scatter(y_pred_train, df_raw['Hole Depth'], c ="green", label = "Predicted Data")
+        plt.xlabel("Rate Of Penetration, ft/hr")
+        plt.ylabel("Measured Depth (MD), ft")
+        plt.legend()
+        plt.title("ROP vs MD")
+        plt.show()
+
 
 with tab3:
 
