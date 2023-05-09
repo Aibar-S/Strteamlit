@@ -173,6 +173,6 @@ with tab2:
     if is_submitted:
         st.success("GREAT")
         st.balloons()
-        st.metric('The rate of penetration for provided drilling data is: ', f'{score} %')
+        st.metric('The rate of penetration for provided drilling data is: ', f'{round(score,2)}')
     else:
         st.error("Submit questionnaire")
