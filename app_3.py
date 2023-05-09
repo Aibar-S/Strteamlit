@@ -93,13 +93,13 @@ with tab1:
 #        options=[1, 2, 3, 4],
 #    )
 
-    Hole_Depth = st.number_input("Hole Depth")
-    Hook_Load = st.number_input("Hook Load")
+    Hole_Depth = st.number_input("Measured Depth in ft")
+    Hook_Load = st.number_input("Hook Load in Klbs")
     Rotary_RPM = st.number_input("Rotary RPM")
-    Rotary_Torque = st.number_input("Rotary Torque")
-    Weight_on_Bit = st.number_input("Weight on Bit")
-    Differential_Pressure = st.number_input("Differential Pressure")
-    Gamma_at_Bit = st.number_input("Gamma at Bit")
+    Rotary_Torque = st.number_input("Rotary Torque in Klbs-ft")
+    Weight_on_Bit = st.number_input("Weight on Bit in Klbs")
+    Differential_Pressure = st.number_input("Differential Pressure in psi")
+    Gamma_at_Bit = st.number_input("Gamma at Bit in gAPI")
 
 #    Hook_Load = form.select_slider(
 #        'How would you describe your level of job involvement?',
@@ -173,6 +173,6 @@ with tab2:
     if is_submitted:
         st.success("GREAT")
         st.balloons()
-        st.metric('The rate of penetration for provided drilling data is: ', f'{round(score,2)}')
+        st.metric('The rate of penetration for provided drilling data is: ', f'{round(score,2)} ft/hr')
     else:
         st.error("Submit questionnaire")
