@@ -158,10 +158,11 @@ with tab2:
 
     model = download_model(X,y)
     
-    y_pred_train = model.predict(X)[0]
+    y_pred_train = model.predict(X)
     
     if is_submitted:
         plt.figure(figsize=(6,12))
+        print()
         plt.scatter(df_raw['Rate Of Penetration'], df_raw['Hole Depth'], c ="blue", label = "Actual Data")
         plt.scatter(y_pred_train, df_raw['Hole Depth'], c ="green", label = "Predicted Data")
         plt.xlabel("Rate Of Penetration, ft/hr")
