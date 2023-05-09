@@ -79,7 +79,7 @@ y, X, scaler = preprocess_data(df_raw)
 #mcol2.metric("Features", df.shape[1] - 1)
 #mcol3.metric("Target = Yes", f"{round(df[TARGET].value_counts(normalize=True)[0] * 100, 1)} %")
 
-tab1, tab2 = st.tabs(["Input drilling data", "Prediction of ROP"])
+tab1, tab2, tab3 = st.tabs(["Input drilling data", "How good the model was trained?", "Prediction of ROP"])
 
 with tab1:
     # Questionnaire
@@ -154,8 +154,19 @@ with tab1:
         'Gamma at Bit': Gamma_at_Bit,
     }
 
-
 with tab2:
+
+    model = download_model(X,y)
+    
+    y_pred_train = model.predict(X)
+    
+    plt.figure(figsize=(6,12))
+    sns.scatterplot(df_raw['Rate Of Penetration'], df_raw['Hole Depth'],
+    label='Actual Blind Data', color='blue')
+    sns.scatterplot(y_pred_train, df_raw['Hole Depth'],
+    label='Predicted Blind Data', color='green')
+
+with tab3:
 
     answers_to_predict = pd.DataFrame(answers, index=[0])
     
