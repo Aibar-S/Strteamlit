@@ -78,7 +78,7 @@ y, X, scaler = preprocess_data(df_raw)
 #mcol2.metric("Features", df.shape[1] - 1)
 #mcol3.metric("Target = Yes", f"{round(df[TARGET].value_counts(normalize=True)[0] * 100, 1)} %")
 
-tab1, tab2, tab3 = st.tabs(["Intro", "Images" , "Input drilling data", "Prediction of ROP"])
+tab1, tab2, tab3, tab4 = st.tabs(["Intro", "Images" , "Input drilling data", "Prediction of ROP"])
 
 
 with tab1:
