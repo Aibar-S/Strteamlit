@@ -78,9 +78,30 @@ y, X, scaler = preprocess_data(df_raw)
 #mcol2.metric("Features", df.shape[1] - 1)
 #mcol3.metric("Target = Yes", f"{round(df[TARGET].value_counts(normalize=True)[0] * 100, 1)} %")
 
-tab1, tab2, tab3 = st.tabs(["Input drilling data", "Prediction of ROP", "Images"])
+tab1, tab2, tab3 = st.tabs(["Intro", "Images" , "Input drilling data", "Prediction of ROP"])
+
 
 with tab1:
+    st.markdown(
+        """
+        - What is ROP?
+          The Rate of Penetration (ROP) is defined as the speed at which a drilling bit breaks a formation to deepen the borehole.
+          It is normally measured in feet per hour.
+          
+        - Why ROP is important?
+          The ROP is an important parameter of drilling activities because an increase in ROP will certainly improve the economics of the drilling operation.
+          
+        - How to achieve high ROP?
+          The improvement of the ROP efficiency is achieved by optimizing the drilling parameters of the formations being penetrated as well as borehole conditions.
+          Therefore, well-site engineers must make rational decisions based on a combination of offset-well analysis and real-time live well feed to ascertain the highest feasible ROP.
+    """
+    )
+
+with tab2:
+    image = Image.open('drilling_rig.JPG')
+    st.image(image, caption='Drilling rig')
+
+with tab3:
     # Questionnaire
 
     #form = st.form(key='submit_form')
@@ -155,7 +176,7 @@ with tab1:
     }
 
 
-with tab2:
+with tab4:
 
     answers_to_predict = pd.DataFrame(answers, index=[0])
     
@@ -178,6 +199,3 @@ with tab2:
         st.error("Submit questionnaire")
         
 
-with tab3:
-    image = Image.open('drilling_rig.JPG')
-    st.image(image, caption='Drilling ring')
