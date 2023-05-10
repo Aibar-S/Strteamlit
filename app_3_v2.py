@@ -84,8 +84,8 @@ tab1, tab2, tab3, tab4 = st.tabs(["Intro", "Images" , "Input drilling data", "Pr
 with tab1:
     st.markdown(
         """
-        - What is **:blue[ROP]**?
-          The Rate of Penetration **:blue[ROP]** is defined as the speed at which a drilling bit breaks a formation to deepen the borehole.
+        - What is the Rate of Penetration (**:blue[ROP]**)?
+          The Rate of Penetration is defined as the speed at which a drilling bit breaks a formation to deepen the borehole.
           It is normally measured in feet per hour.
           
         - Why **:blue[ROP]** is important?
@@ -94,6 +94,19 @@ with tab1:
         - How to achieve high **:blue[ROP]**?
           The improvement of the **:blue[ROP]** efficiency is achieved by optimizing the drilling parameters of the formations being penetrated as well as borehole conditions.
           Therefore, well-site engineers must make rational decisions based on a combination of offset-well analysis and real-time live well feed to ascertain the highest feasible **:blue[ROP]**.
+        - Why to predict **:blue[ROP]**?
+          **:blue[ROP]** prediction can assist precise planning of drilling operations and can reduce drilling costs by decreasing drilling time.
+
+        - Which parameters affect **:blue[ROP]**
+            - Measured Depth - measured depth along the well trajectory.
+            - Hook Load - The total force pulling down on the hook. This total force includes the weight of the drillstring in air and any other equipment, reduced by any force that tends to reduce that weight (friction along the wellbore wall, buoyant forces on the drillstring caused by its immersion in drilling fluid.
+            - Rotary RPM - revolutions per minute. A rotary table is a mechanical device on a drilling rig that provides clockwise rotational force to the drill string. Rotary speed is the number of times the rotary table makes one full revolution in one minute (rpm).
+            - Rotary Torque - The force required to rotate the entire drill string and the drilling bit at the bottom of the hole to overcome the rotational friction against the wellbore, the viscous force between the drill string and drilling fluid as well as the drilling bit torque.
+            - Weight on Bit - The amount of downward force exerted on the drilling bit by drill collars to break a rock.
+            - Differential Pressure - The difference in pressure between the hydrostatic head of the drilling fluid in the fluid column, and the pressure exerted from the formation at any given depth in the hole. May be positive, zero, or negative with respect to the hydrostatic head.
+            - Gamma at Bit - The natural radioactivity in a formation used to classify lithologies and correlate zones.
+
+
     """
     )
 
