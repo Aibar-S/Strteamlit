@@ -84,16 +84,16 @@ tab1, tab2, tab3, tab4 = st.tabs(["Intro", "Images" , "Input drilling data", "Pr
 with tab1:
     st.markdown(
         """
-        - What is ROP?
-          The Rate of Penetration (ROP) is defined as the speed at which a drilling bit breaks a formation to deepen the borehole.
+        - What is **:blue[ROP]**?
+          The Rate of Penetration **:blue[ROP]** is defined as the speed at which a drilling bit breaks a formation to deepen the borehole.
           It is normally measured in feet per hour.
           
-        - Why ROP is important?
-          The ROP is an important parameter of drilling activities because an increase in ROP will certainly improve the economics of the drilling operation.
+        - Why **:blue[ROP]** is important?
+          The **:blue[ROP]** is an important parameter of drilling activities because an increase in **:blue[ROP]** will certainly improve the economics of the drilling operation.
           
-        - How to achieve high ROP?
-          The improvement of the ROP efficiency is achieved by optimizing the drilling parameters of the formations being penetrated as well as borehole conditions.
-          Therefore, well-site engineers must make rational decisions based on a combination of offset-well analysis and real-time live well feed to ascertain the highest feasible ROP.
+        - How to achieve high **:blue[ROP]**?
+          The improvement of the **:blue[ROP]** efficiency is achieved by optimizing the drilling parameters of the formations being penetrated as well as borehole conditions.
+          Therefore, well-site engineers must make rational decisions based on a combination of offset-well analysis and real-time live well feed to ascertain the highest feasible **:blue[ROP]**.
     """
     )
 
