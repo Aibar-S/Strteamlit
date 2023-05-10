@@ -2,11 +2,12 @@ import streamlit as st
 import pandas as pd
 import joblib
 import time
-from sklearn.ensemble import RandomForestClassifier
 
 import numpy as np
 import pandas as pd
+from PIL import Image
 
+from sklearn.ensemble import RandomForestClassifier
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVR
@@ -77,7 +78,7 @@ y, X, scaler = preprocess_data(df_raw)
 #mcol2.metric("Features", df.shape[1] - 1)
 #mcol3.metric("Target = Yes", f"{round(df[TARGET].value_counts(normalize=True)[0] * 100, 1)} %")
 
-tab1, tab2 = st.tabs(["Input drilling data", "Prediction of ROP"])
+tab1, tab2, tab3 = st.tabs(["Input drilling data", "Prediction of ROP", "Images"])
 
 with tab1:
     # Questionnaire
@@ -175,3 +176,8 @@ with tab2:
         st.metric('The rate of penetration for provided drilling data is: ', f'{round(score,2)} ft/hr')
     else:
         st.error("Submit questionnaire")
+        
+
+with tab3:
+    image = Image.open('drilling_rig.JPG')
+    st.image(image, caption='Drilling ring')
