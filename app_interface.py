@@ -24,7 +24,7 @@ def main():
 
         # Calculate the maximum width and height to fit inside the window
         max_width = st.sidebar.width - 50  # Subtracting some padding
-        max_height = st.sidebar.height - st.title.height - 100  # Subtracting title height and some padding
+        max_height = st.sidebar.height - st.title_height - 100  # Subtracting title height and some padding
 
         # Rescale the picture to fit inside the window
         picture.thumbnail((max_width, max_height), Image.ANTIALIAS)
