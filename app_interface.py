@@ -1,4 +1,5 @@
 import streamlit as st
+from PIL import Image
 
 def main():
     st.set_page_config(page_title="Picture Description App", layout="wide")
