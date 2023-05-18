@@ -22,6 +22,13 @@ def main():
         picture_path = 'drilling_rig.JPG'  # Replace with the path to your picture
         picture = Image.open(picture_path)
 
+        # Calculate the maximum width and height to fit inside the window
+        max_width = st.sidebar.width - 50  # Subtracting some padding
+        max_height = st.sidebar.height - st.title.height - 100  # Subtracting title height and some padding
+
+        # Rescale the picture to fit inside the window
+        picture.thumbnail((max_width, max_height), Image.ANTIALIAS)
+
         # Create a drawing object
         draw = ImageDraw.Draw(picture)
 
@@ -60,7 +67,4 @@ def main():
 
     else:
         st.title("About")
-        st.write("This app was created by [Your Name] as a Streamlit exercise.")
-
-if __name__ == "__main__":
-    main()
+        st.write("This app was created by [Your Name] as a
