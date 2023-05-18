@@ -25,8 +25,8 @@ def main():
         st.write("Click on the names to view the description of each part.")
         
         # Display the arrows and names on top of the picture
-        arrow_start_points = [(100, 200), (300, 400), (500, 600)]  # Replace with the coordinates of your arrows
-        arrow_end_points = [(150, 250), (350, 450), (550, 650)]  # Replace with the coordinates of your arrows
+        arrow_start_points = [(10, 20), (30, 40), (50, 60)]  # Replace with the coordinates of your arrows
+        arrow_end_points = [(15, 25), (35, 45), (55, 65)]  # Replace with the coordinates of your arrows
         part_names = list(parts.keys())
         
         # Create a container to hold the picture and the arrows
