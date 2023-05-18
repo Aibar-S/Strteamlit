@@ -67,4 +67,8 @@ def main():
 
     else:
         st.title("About")
-        st.write("This app was created by [Your Name] as a
+        st.write("This app was created by [Your Name] as a Streamlit exercise.")
+    
+if __name__ == "__main__":
+    main()
+
