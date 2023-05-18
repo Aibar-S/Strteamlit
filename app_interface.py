@@ -19,7 +19,7 @@ def main():
         }
 
         # Load the picture
-        picture_path = "drilling_rig.JPG"  # Replace with the path to your picture
+        picture_path = 'drilling_rig.JPG'  # Replace with the path to your picture
         picture = Image.open(picture_path)
 
         # Create a drawing object
@@ -31,7 +31,8 @@ def main():
 
         # Draw arrows on the picture
         for start_point, end_point in zip(arrow_start_points, arrow_end_points):
-            draw.arrow(start_point + end_point, fill="red", width=3)
+            draw.line(start_point + end_point, fill="red", width=3)
+            draw.polygon([end_point, (end_point[0] - 10, end_point[1] + 5), (end_point[0] + 10, end_point[1] + 5)], fill="red")
 
         # Display the picture with arrows
         st.image(picture, use_column_width=True)
