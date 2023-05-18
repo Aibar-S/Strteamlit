@@ -33,12 +33,13 @@ def main():
         container = st.container()
         
         # Render the picture
-        container.image(picture_url, use_column_width=True)
+        container.image(image, use_column_width=True)
         
         # Render the arrows and descriptions
         for i, start_point in enumerate(arrow_start_points):
             container.write(f"**{part_names[i]}**")
-            container.image("https://example.com/arrow.png", use_column_width=True)
+            image2 = Image.open('arrow.png')
+            container.image(image2, use_column_width=True)
             
             # Get the description of the part when its name is clicked
             if container.button(part_names[i]):
