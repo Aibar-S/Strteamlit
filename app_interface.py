@@ -1,5 +1,5 @@
 import streamlit as st
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 def main():
     st.set_page_config(page_title="Picture Description App", layout="wide")
@@ -29,12 +29,23 @@ def main():
         arrow_start_points = [(100, 200), (300, 400), (500, 600)]  # Replace with the coordinates of your arrows
         arrow_end_points = [(150, 250), (350, 450), (550, 650)]  # Replace with the coordinates of your arrows
 
-        # Draw arrows on the picture
-        for start_point, end_point in zip(arrow_start_points, arrow_end_points):
+        # Define the font for the part names
+        font = ImageFont.truetype("path_to_your_font.ttf", size=16)  # Replace with the path to your font file and desired font size
+
+        # Draw arrows and part names on the picture
+        for i, (start_point, end_point) in enumerate(zip(arrow_start_points, arrow_end_points)):
+            part_name = list(parts.keys())[i]
+
+            # Draw arrow
             draw.line(start_point + end_point, fill="red", width=3)
             draw.polygon([end_point, (end_point[0] - 10, end_point[1] + 5), (end_point[0] + 10, end_point[1] + 5)], fill="red")
 
-        # Display the picture with arrows
+            # Draw part name
+            text_width, text_height = draw.textsize(part_name, font=font)
+            text_position = (start_point[0] + (end_point[0] - start_point[0]) // 2 - text_width // 2, start_point[1] - text_height - 10)
+            draw.text(text_position, part_name, font=font, fill="black")
+
+        # Display the picture with arrows and part names
         st.image(picture, use_column_width=True)
 
         st.write("Click on the names to view the description of each part.")
