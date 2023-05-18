@@ -1,24 +1,22 @@
 import streamlit as st
 from PIL import Image
 
+import streamlit as st
+
 def main():
     st.set_page_config(page_title="Picture Description App", layout="wide")
     
     st.sidebar.title("Tabs")
-    tabs = ["Picture", "Parts Description", "About"]
+    tabs = ["Picture", "About"]
     selected_tab = st.sidebar.selectbox("Select a tab", tabs)
     
     if selected_tab == "Picture":
         st.title("Picture")
         st.write("Here is the picture:")
         
-        #picture_url = "https://example.com/picture.jpg"  # Replace with the URL of your picture
-        picture_url = Image.open('drilling_rig.JPG')
+        image = Image.open('drilling_rig.JPG')
+        st.image(image, use_column_width=True)
         
-        st.image(picture_url, use_column_width=True)
-    
-    elif selected_tab == "Parts Description":
-        st.title("Parts Description")
         st.write("Click on the names to view the description of each part.")
         
         # Define the parts of the picture and their descriptions
@@ -34,7 +32,7 @@ def main():
         part_names = list(parts.keys())
         
         for i, start_point in enumerate(arrow_start_points):
-            col1, col2, col3 = st.columns([0.4, 0.1, 0.5])
+            col1, col2, col3 = st.beta_columns([0.4, 0.1, 0.5])
             
             with col1:
                 st.write(part_names[i])
