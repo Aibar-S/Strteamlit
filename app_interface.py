@@ -34,7 +34,7 @@ def main():
         part_names = list(parts.keys())
         
         for i, start_point in enumerate(arrow_start_points):
-            col1, col2, col3 = st.beta_columns([0.4, 0.1, 0.5])
+            col1, col2, col3 = st.columns([0.4, 0.1, 0.5])
             
             with col1:
                 st.write(part_names[i])
