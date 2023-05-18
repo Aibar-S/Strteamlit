@@ -1,8 +1,6 @@
 import streamlit as st
 from PIL import Image
 
-import streamlit as st
-
 def main():
     st.set_page_config(page_title="Picture Description App", layout="wide")
     
@@ -12,12 +10,6 @@ def main():
     
     if selected_tab == "Picture":
         st.title("Picture")
-        st.write("Here is the picture:")
-        
-        image = Image.open('drilling_rig.JPG')
-        st.image(image, use_column_width=True)
-        
-        st.write("Click on the names to view the description of each part.")
         
         # Define the parts of the picture and their descriptions
         parts = {
@@ -26,27 +18,31 @@ def main():
             "Part C": "Description of Part C.",
         }
         
-        # Display the arrows and names
+        # Display the picture
+        image = Image.open('drilling_rig.JPG')
+        st.image(image, use_column_width=True)
+        
+        st.write("Click on the names to view the description of each part.")
+        
+        # Display the arrows and names on top of the picture
         arrow_start_points = [(100, 200), (300, 400), (500, 600)]  # Replace with the coordinates of your arrows
         arrow_end_points = [(150, 250), (350, 450), (550, 650)]  # Replace with the coordinates of your arrows
         part_names = list(parts.keys())
         
+        # Create a container to hold the picture and the arrows
+        container = st.container()
+        
+        # Render the picture
+        container.image(picture_url, use_column_width=True)
+        
+        # Render the arrows and descriptions
         for i, start_point in enumerate(arrow_start_points):
-            col1, col2, col3 = st.beta_columns([0.4, 0.1, 0.5])
+            container.write(f"**{part_names[i]}**")
+            container.image("https://example.com/arrow.png", use_column_width=True)
             
-            with col1:
-                st.write(part_names[i])
-            
-            with col2:
-                st.write("->")
-            
-            with col3:
-                # Add an empty space to reserve space for the description
-                st.empty()
-                
-                # Get the description of the part when its name is clicked
-                if col1.button(part_names[i]):
-                    st.write(parts[part_names[i]])
+            # Get the description of the part when its name is clicked
+            if container.button(part_names[i]):
+                container.write(parts[part_names[i]])
     
     else:
         st.title("About")
