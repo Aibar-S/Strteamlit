@@ -30,7 +30,7 @@ def main():
         arrow_end_points = [(150, 250), (350, 450), (550, 650)]  # Replace with the coordinates of your arrows
 
         # Define the font for the part names
-        font = ImageFont.truetype("path_to_your_font.ttf", size=16)  # Replace with the path to your font file and desired font size
+        font = ImageFont.truetype("ArianaVioleta-dz2K.ttf", size=16)  # Replace with the path to your font file and desired font size
 
         # Draw arrows and part names on the picture
         for i, (start_point, end_point) in enumerate(zip(arrow_start_points, arrow_end_points)):
