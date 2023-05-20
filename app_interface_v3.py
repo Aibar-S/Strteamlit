@@ -109,6 +109,26 @@ def main():
             'Differential Pressure': Differential_Pressure,
             'Gamma at Bit': Gamma_at_Bit,
         }
+
+        answers_to_predict = pd.DataFrame(answers, index=[0])
+        
+        scaled_answers_to_predict=scaler.transform(answers_to_predict)
+        
+        scaled_answers_to_predict=pd.DataFrame(scaled_answers_to_predict, columns=['Hole Depth', 'Hook Load', 'Rotary RPM', 'Rotary Torque','Weight on Bit', 'Differential Pressure', 'Gamma at Bit'])
+
+        model = download_model(X,y)
+
+        proba = model.predict(scaled_answers_to_predict)[0]
+        
+        score = proba
+        if is_submitted:
+            st.success("Your result is ready and presented below")
+            #st.balloons()
+            st.metric('The rate of penetration for provided drilling data is: ', f'{round(score,2)} ft/hr')
+        else:
+            st.error("Submit questionnaire")
+
+
         
     else:
         st.title("About")
