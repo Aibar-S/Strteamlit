@@ -54,13 +54,40 @@ def main():
     st.set_page_config(page_title="Picture Description App", layout="wide")
     
     st.sidebar.title("Tabs")
-    tabs = ["About", "Picture", "Prediction"]
+    tabs = ["About", "Drilling process", "Project description", "Prediction"]
     selected_tab = st.sidebar.selectbox("Select a tab", tabs)
     
     df_raw = download_data('data/ROP_DataSet.csv')
     y, X, scaler = preprocess_data(df_raw)
         
-    if selected_tab == "Picture":
+    if selected_tab == "Drilling process":
+        st.title("Drliing process explained")
+        st.write("        - A drilling bit is attached to the end of a long string of jointed, hollow drill pipe.
+        - The whole assembly is rotated by a motorized turntable at the surface, the rotary table.
+        - The rotating bit cuts or crushes the rock.
+        - Drilling mud, consisting of water or an oil-water mixture, solids, and various additives, is circulated down through the drill pipe and out through nozzles in the drilling bit.
+        - The mud returns to the surface up the annulus, the space outside of the drill pipe.
+        - The mud lubricates the bit, prevents it from getting too hot because of friction, and lifts the drilled rock cuttings up the hole.
+        - It should be dense enough to overbalance any high-pressure formations encountered while drilling.
+        - If it fails in this last action, the fluid in the formation will displace the mud up the hole and hydrocarbons could exit at the surface and a blowout results.")
+        
+        picture_url = 'drilling_rig.JPG'  # Replace with the URL of your picture
+        st.image(picture_url, use_column_width=False)
+        
+        st.write("Click on the buttons to view the description of each part.")
+        
+        # Define the parts of the picture and their descriptions
+        parts = {
+            "Part A": "Description of Part A.",
+            "Part B": "Description of Part B.",
+            "Part C": "Description of Part C.",
+        }
+        
+        # Display the buttons and descriptions
+        for part_name, description in parts.items():
+            if st.button(part_name):
+                st.write(description)
+    elif selected_tab == "Project description":
         st.title("Picture")
         st.write("Here is the picture:")
         
@@ -79,8 +106,7 @@ def main():
         # Display the buttons and descriptions
         for part_name, description in parts.items():
             if st.button(part_name):
-                st.write(description)
-    
+                st.write(description)    
     elif selected_tab == "Prediction":
         st.title("Enter the required data and press 'Submit' button")
         Hole_Depth = st.number_input("Measured Depth in ft")
