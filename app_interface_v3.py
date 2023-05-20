@@ -123,7 +123,7 @@ def main():
         score = proba
         if is_submitted:
             st.success("The predicted rate of penetration for above provided data is below:")
-            st.metric(f'{round(score,2)} ft/hr')
+            st.metric('', f'{round(score,2)} ft/hr')
 
         
     else:
