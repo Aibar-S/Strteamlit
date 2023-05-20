@@ -160,7 +160,7 @@ def main():
     else:
         st.title("Project description")
         st.write("""
-        - (**:blue[The current application predicts which rate of penetration could be expected by drilling team]**)?
+        - ##  **:blue[The current application predicts which rate of penetration could be expected by drilling team]**?
           
         - What is the Rate of Penetration (**:blue[ROP]**)?
         
