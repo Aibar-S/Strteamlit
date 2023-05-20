@@ -99,13 +99,13 @@ def main():
         
         # Define the parts of the picture and their descriptions
         parts = {
-            "1. Measured Depth": "Measured depth along the well trajectory",
-            "2. Hook Load": "The total force pulling down on the hook. This total force includes the weight of the drillstring in air and any other equipment, reduced by any force that tends to reduce that weight (friction along the wellbore wall, buoyant forces on the drillstring caused by its immersion in drilling fluid.",
-            "3. Rotary RPM": "Revolutions per minute. A rotary table is a mechanical device on a drilling rig that provides clockwise rotational force to the drill string. Rotary speed is the number of times the rotary table makes one full revolution in one minute (rpm).",
-            "4. Rotary Torque": "The force required to rotate the entire drill string and the drilling bit at the bottom of the hole to overcome the rotational friction against the wellbore, the viscous force between the drill string and drilling fluid as well as the drilling bit torque.",
-            "5. Weight on Bit": "The amount of downward force exerted on the drilling bit by drill pipes to break a rock.",
-            "6. Differential Pressure": "The difference in pressure between the hydrostatic head of the drilling fluid in the fluid column, and the pressure exerted from the formation at any given depth in the hole. May be positive, zero, or negative with respect to the hydrostatic head.",
-            "7. Gamma at Bit": "The natural radioactivity in a formation used to classify lithologies and correlate zones.",
+            "1-Measured Depth": "Measured depth along the well trajectory",
+            "2-Hook Load": "The total force pulling down on the hook. This total force includes the weight of the drillstring in air and any other equipment, reduced by any force that tends to reduce that weight (friction along the wellbore wall, buoyant forces on the drillstring caused by its immersion in drilling fluid.",
+            "3-Rotary RPM": "Revolutions per minute. A rotary table is a mechanical device on a drilling rig that provides clockwise rotational force to the drill string. Rotary speed is the number of times the rotary table makes one full revolution in one minute (rpm).",
+            "4-Rotary Torque": "The force required to rotate the entire drill string and the drilling bit at the bottom of the hole to overcome the rotational friction against the wellbore, the viscous force between the drill string and drilling fluid as well as the drilling bit torque.",
+            "5-Weight on Bit": "The amount of downward force exerted on the drilling bit by drill pipes to break a rock.",
+            "6-Differential Pressure": "The difference in pressure between the hydrostatic head of the drilling fluid in the fluid column, and the pressure exerted from the formation at any given depth in the hole. May be positive, zero, or negative with respect to the hydrostatic head.",
+            "7-Gamma at Bit": "The natural radioactivity in a formation used to classify lithologies and correlate zones.",
         }
         
         # Display the buttons and descriptions
