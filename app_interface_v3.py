@@ -161,6 +161,7 @@ def main():
         st.title("Project description")
         st.write("""
         - What is the Rate of Penetration (**:blue[ROP]**)?
+        
           The Rate of Penetration is defined as the speed at which a drilling bit breaks a formation to deepen the borehole.
           
         - Why **:blue[ROP]** is important?
