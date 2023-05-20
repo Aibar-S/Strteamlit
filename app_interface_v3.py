@@ -157,8 +157,9 @@ def main():
             st.success("The predicted rate of penetration for above provided data is below:")
             st.metric('', f'{round(score,2)} ft/hr')
     elif selected_tab == "Cross Plot":
-        st.title("Cross Plot")
-        st.write("This is a cross plot graph:")
+        st.title("Rate of penetration vs Measured depth")
+        st.write("""
+        ### **:blue[The cross plot below shows the real ROP vs predicted ROP]** """)
 
         # Generate random data for demonstration
         x1 = df_raw["Rate Of Penetration"]
