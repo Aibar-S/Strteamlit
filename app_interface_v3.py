@@ -54,7 +54,7 @@ def main():
     st.set_page_config(page_title="Picture Description App", layout="wide")
     
     st.sidebar.title("Tabs")
-    tabs = ["About", "Drilling process", "Project description", "Prediction"]
+    tabs = ["Project description", "Drilling process", "Rate of penetration", "Prediction"]
     selected_tab = st.sidebar.selectbox("Select a tab", tabs)
     
     df_raw = download_data('data/ROP_DataSet.csv')
@@ -75,33 +75,37 @@ def main():
         picture_url = 'Pictures/Drilling_pic_1.JPG'  # Replace with the URL of your picture
         st.image(picture_url, use_column_width=False)
         
-        st.write("Click on the buttons to view the description of each part.")
+#        st.write("Click on the buttons to view the description of each part.")
+#        
+#        # Define the parts of the picture and their descriptions
+#        parts = {
+#            "Part A": "Description of Part A.",
+#            "Part B": "Description of Part B.",
+#            "Part C": "Description of Part C.",
+#        }
+#        
+#        # Display the buttons and descriptions
+#        for part_name, description in parts.items():
+#            if st.button(part_name):
+#                st.write(description)
+    elif selected_tab == "Rate of penetration":
+        st.title("Rate of penetration (ROP) explained")
+        st.write("Which parameters affect the **:blue[ROP]**?")
         
-        # Define the parts of the picture and their descriptions
-        parts = {
-            "Part A": "Description of Part A.",
-            "Part B": "Description of Part B.",
-            "Part C": "Description of Part C.",
-        }
-        
-        # Display the buttons and descriptions
-        for part_name, description in parts.items():
-            if st.button(part_name):
-                st.write(description)
-    elif selected_tab == "Project description":
-        st.title("Picture")
-        st.write("Here is the picture:")
-        
-        picture_url = 'drilling_rig.JPG'  # Replace with the URL of your picture
+        picture_url = 'Pictures/Drilling_pic_3.JPG'  # Replace with the URL of your picture
         st.image(picture_url, use_column_width=False)
         
         st.write("Click on the buttons to view the description of each part.")
         
         # Define the parts of the picture and their descriptions
         parts = {
-            "Part A": "Description of Part A.",
-            "Part B": "Description of Part B.",
-            "Part C": "Description of Part C.",
+            "1. Measured Depth": "Measured depth along the well trajectory",
+            "2. Hook Load": "The total force pulling down on the hook. This total force includes the weight of the drillstring in air and any other equipment, reduced by any force that tends to reduce that weight (friction along the wellbore wall, buoyant forces on the drillstring caused by its immersion in drilling fluid.",
+            "3. Rotary RPM": "Revolutions per minute. A rotary table is a mechanical device on a drilling rig that provides clockwise rotational force to the drill string. Rotary speed is the number of times the rotary table makes one full revolution in one minute (rpm).",
+            "4. Rotary Torque": "The force required to rotate the entire drill string and the drilling bit at the bottom of the hole to overcome the rotational friction against the wellbore, the viscous force between the drill string and drilling fluid as well as the drilling bit torque.",
+            "5. Weight on Bit": "The amount of downward force exerted on the drilling bit by drill pipes to break a rock.",
+            "6. Differential Pressure": "The difference in pressure between the hydrostatic head of the drilling fluid in the fluid column, and the pressure exerted from the formation at any given depth in the hole. May be positive, zero, or negative with respect to the hydrostatic head.",
+            "7. Gamma at Bit": "The natural radioactivity in a formation used to classify lithologies and correlate zones.",
         }
         
         # Display the buttons and descriptions
@@ -154,7 +158,7 @@ def main():
 
         
     else:
-        st.title("About")
+        st.title("Project description")
         st.write("This app was created by [Your Name] as a Streamlit exercise.")
     
 if __name__ == "__main__":
