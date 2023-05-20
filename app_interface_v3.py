@@ -161,12 +161,12 @@ def main():
         st.write("This is a cross plot graph:")
 
         # Generate random data for demonstration
-        x = np.random.randn(100)
-        y = np.random.randn(100)
+        x1 = df_raw["Hole Depth"]
+        y1 = df_raw["Rate Of Penetration"]
 
         # Create the cross plot graph using Matplotlib
         fig, ax = plt.subplots()
-        ax.scatter(x, y)
+        ax.scatter(x1, y1)
         ax.set_xlabel("X")
         ax.set_ylabel("Y")
         ax.set_title("Cross Plot")
