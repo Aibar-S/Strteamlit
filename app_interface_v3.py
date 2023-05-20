@@ -63,14 +63,14 @@ def main():
     if selected_tab == "Drilling process":
         st.title("Drilling process explained")
         st.write("""
-        - A drilling bit is attached to the end of a long string of jointed, hollow drill pipe.
-        - The whole assembly is rotated by a motorized turntable at the surface, the rotary table.
-        - The rotating bit cuts or crushes the rock.
-        - Drilling mud, consisting of water or an oil-water mixture, solids, and various additives, is circulated down through the drill pipe and out through nozzles in the drilling bit.
-        - The mud returns to the surface up the annulus, the space outside of the drill pipe.
-        - The mud lubricates the bit, prevents it from getting too hot because of friction, and lifts the drilled rock cuttings up the hole.
+        - **:blue[A drilling bit]** is attached to the end of a long string of jointed, hollow **:blue[drill pipe]**.
+        - The whole assembly is rotated by a motorized turntable at the surface, the **:blue[rotary table]**.
+        - The rotating **:blue[bit]** cuts or crushes the **:blue[rock]**.
+        - **:blue[Drilling mud]**, consisting of water or an oil-water mixture, solids, and various additives, is circulated down through the **:blue[drill pipe]** and out through nozzles in the **:blue[drilling bit]**.
+        - The **:blue[mud]** returns to the surface up the annulus, the space outside of the **:blue[drill pipe]**.
+        - The **:blue[mud]** lubricates the **:blue[bit]**, prevents it from getting too hot because of friction, and lifts the drilled **:blue[rock]** cuttings up the hole.
         - It should be dense enough to overbalance any high-pressure formations encountered while drilling.
-        - If it fails in this last action, the fluid in the formation will displace the mud up the hole and hydrocarbons could exit at the surface and a blowout results. """)
+        - If it fails in this last action, the fluid in the formation will displace the **:blue[mud]** up the hole and hydrocarbons could exit at the surface and a blowout results. """)
         
         picture_url = 'Pictures/Drilling_pic_1.JPG'  # Replace with the URL of your picture
         st.image(picture_url, use_column_width=False)
@@ -100,12 +100,12 @@ def main():
         # Define the parts of the picture and their descriptions
         parts = {
             "**:blue[1-Measured Depth]**": "Measured depth along the well trajectory",
-            "2-Hook Load": "The total force pulling down on the hook. This total force includes the weight of the drillstring in air and any other equipment, reduced by any force that tends to reduce that weight (friction along the wellbore wall, buoyant forces on the drillstring caused by its immersion in drilling fluid.",
-            "3-Rotary RPM": "Revolutions per minute. A rotary table is a mechanical device on a drilling rig that provides clockwise rotational force to the drill string. Rotary speed is the number of times the rotary table makes one full revolution in one minute (rpm).",
-            "4-Rotary Torque": "The force required to rotate the entire drill string and the drilling bit at the bottom of the hole to overcome the rotational friction against the wellbore, the viscous force between the drill string and drilling fluid as well as the drilling bit torque.",
-            "5-Weight on Bit": "The amount of downward force exerted on the drilling bit by drill pipes to break a rock.",
-            "6-Differential Pressure": "The difference in pressure between the hydrostatic head of the drilling fluid in the fluid column, and the pressure exerted from the formation at any given depth in the hole. May be positive, zero, or negative with respect to the hydrostatic head.",
-            "7-Gamma at Bit": "The natural radioactivity in a formation used to classify lithologies and correlate zones. It shows the potential lithologies which can contain oil and gas",
+            "**:blue[2-Hook Load]**": "The total force pulling down on the hook. This total force includes the weight of the drillstring in air and any other equipment, reduced by any force that tends to reduce that weight (friction along the wellbore wall, buoyant forces on the drillstring caused by its immersion in drilling fluid.",
+            "**:blue[3-Rotary RPM]**": "Revolutions per minute. A rotary table is a mechanical device on a drilling rig that provides clockwise rotational force to the drill string. Rotary speed is the number of times the rotary table makes one full revolution in one minute (rpm).",
+            "**:blue[4-Rotary Torque]**": "The force required to rotate the entire drill string and the drilling bit at the bottom of the hole to overcome the rotational friction against the wellbore, the viscous force between the drill string and drilling fluid as well as the drilling bit torque.",
+            "**:blue[5-Weight on Bit]**": "The amount of downward force exerted on the drilling bit by drill pipes to break a rock.",
+            "**:blue[6-Differential Pressure]**": "The difference in pressure between the hydrostatic head of the drilling fluid in the fluid column, and the pressure exerted from the formation at any given depth in the hole. May be positive, zero, or negative with respect to the hydrostatic head.",
+            "**:blue[7-Gamma at Bit]**": "The natural radioactivity in a formation used to classify lithologies and correlate zones. It shows the potential lithologies which can contain oil and gas",
         }
         
         # Display the buttons and descriptions
