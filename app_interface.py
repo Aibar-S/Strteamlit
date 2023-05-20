@@ -22,14 +22,14 @@ def main():
         picture_path = 'drilling_rig.JPG'  # Replace with the path to your picture
         picture = Image.open(picture_path)
 
-        # Create a container in the sidebar
-        sidebar_container = st.sidebar.beta_container()
+        # Create an empty slot in the sidebar
+        sidebar_slot = st.sidebar.empty()
 
-        # Calculate the maximum width and height to fit inside the container
-        max_width = sidebar_container.width - 50  # Subtracting some padding
-        max_height = sidebar_container.height - st.title.height - 100  # Subtracting title height and some padding
+        # Calculate the maximum width and height to fit inside the slot
+        max_width = sidebar_slot.width - 50  # Subtracting some padding
+        max_height = sidebar_slot.height - st.title_height() - 100  # Subtracting title height and some padding
 
-        # Rescale the picture to fit inside the container
+        # Rescale the picture to fit inside the slot
         picture.thumbnail((max_width, max_height), Image.ANTIALIAS)
 
         # Create a drawing object
