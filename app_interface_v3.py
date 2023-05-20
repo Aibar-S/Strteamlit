@@ -122,12 +122,8 @@ def main():
         
         score = proba
         if is_submitted:
-            st.success("Your result is ready and presented below")
-            #st.balloons()
-            st.metric('The rate of penetration for provided drilling data is: ', f'{round(score,2)} ft/hr')
-        else:
-            st.error("Submit questionnaire")
-
+            st.success("The predicted rate of penetration for above provided data is below:")
+            st.metric(f'{round(score,2)} ft/hr')
 
         
     else:
