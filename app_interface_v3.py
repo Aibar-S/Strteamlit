@@ -82,7 +82,7 @@ def main():
                 st.write(description)
     
     elif selected_tab == "Prediction":
-        st.title("predictions made here")
+        st.title("Enter the required data and press 'Submit' button")
         Hole_Depth = st.number_input("Measured Depth in ft")
         Hook_Load = st.number_input("Hook Load in Klbs")
         Rotary_RPM = st.number_input("Rotary RPM")
