@@ -14,7 +14,7 @@ def main():
         picture_url = 'drilling_rig.JPG'  # Replace with the URL of your picture
         
         # Display the picture with full-width container
-        with st.beta_container():
+        with st.container():
             st.image(picture_url, use_column_width=True)
 
         st.write("Click on the buttons to view the description of each part.")
