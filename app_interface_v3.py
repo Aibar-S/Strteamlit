@@ -157,7 +157,7 @@ def main():
             st.success("The predicted rate of penetration for above provided data is below:")
             st.metric('', f'{round(score,2)} ft/hr')
     elif selected_tab == "Evaluation of trained model":
-        st.title("Rate of penetration vs Measured depth")
+        st.title("Rate of penetration (ROP) vs Measured depth")
         st.write("""
         ### **:blue[The cross plot below shows the real ROP vs predicted ROP]** """)
 
