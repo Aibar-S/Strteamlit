@@ -53,9 +53,9 @@ def download_model(X, y):
 def main():
     st.set_page_config(page_title="Picture Description App", layout="wide")
     
-    st.sidebar.title("Tabs")
+    st.sidebar.title("Pages")
     tabs = ["Project description", "Drilling process", "Rate of penetration", "Prediction"]
-    selected_tab = st.sidebar.selectbox("Select a tab", tabs)
+    selected_tab = st.sidebar.selectbox("Select a page below", tabs)
     
     df_raw = download_data('data/ROP_DataSet.csv')
     y, X, scaler = preprocess_data(df_raw)
