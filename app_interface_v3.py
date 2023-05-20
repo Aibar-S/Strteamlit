@@ -55,7 +55,7 @@ def main():
     st.set_page_config(page_title="Picture Description App", layout="wide")
     
     st.sidebar.title("Pages")
-    tabs = ["Project description", "Drilling process", "Rate of penetration", "Prediction", "Cross Plot"]
+    tabs = ["Project description", "Drilling process", "Rate of penetration", "Prediction", "Evaluation of trained model"]
     selected_tab = st.sidebar.radio("Select a page below", tabs)
     
     df_raw = download_data('data/ROP_DataSet.csv')
@@ -156,7 +156,7 @@ def main():
         if is_submitted:
             st.success("The predicted rate of penetration for above provided data is below:")
             st.metric('', f'{round(score,2)} ft/hr')
-    elif selected_tab == "Evaluation of trained model???":
+    elif selected_tab == "Evaluation of trained model":
         st.title("Rate of penetration vs Measured depth")
         st.write("""
         ### **:blue[The cross plot below shows the real ROP vs predicted ROP]** """)
