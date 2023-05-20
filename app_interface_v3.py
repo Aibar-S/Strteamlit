@@ -17,7 +17,7 @@ def main():
     st.set_page_config(page_title="Picture Description App", layout="wide")
     
     st.sidebar.title("Tabs")
-    tabs = ["Picture", "Prediction", "About"]
+    tabs = ["About", "Picture", "Prediction"]
     selected_tab = st.sidebar.selectbox("Select a tab", tabs)
     
     if selected_tab == "Picture":
