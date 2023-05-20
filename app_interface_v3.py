@@ -170,12 +170,13 @@ def main():
         #x2 = df_raw["Rate Of Penetration"]
         
         # Create the cross plot graph using Matplotlib
-        fig, ax = plt.subplots()
-        ax.scatter(x1, y1)
-        ax.scatter(x2, y1)
-        ax.set_xlabel("X")
-        ax.set_ylabel("Y")
-        ax.set_title("Cross Plot")
+        fig, ax = plt.subplots(figsize=(15, 15))
+        ax.scatter(x1, y1, c ="blue", label='Actual data')
+        ax.scatter(x2, y1, c ="green", label='Predicted data')
+        ax.set_xlabel("Rate of penetration, ft/hr")
+        ax.set_ylabel("Measured Depth, ft")
+        ax.set_title("Predicted vs Actual ROP")
+        ax.legend()
         st.pyplot(fig)
 
         
