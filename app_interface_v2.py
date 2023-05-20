@@ -12,7 +12,7 @@ def main():
         st.write("Here is the picture:")
         
         picture_url = 'drilling_rig.JPG'  # Replace with the URL of your picture
-        st.image(picture_url, use_column_width=True)
+        st.image(picture_url, width="100%")
         
         st.write("Click on the buttons to view the description of each part.")
         
