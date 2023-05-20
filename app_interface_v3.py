@@ -4,6 +4,7 @@ import joblib
 import time
 import numpy as np
 from PIL import Image
+import matplotlib.pyplot as plt
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import preprocessing
@@ -54,7 +55,7 @@ def main():
     st.set_page_config(page_title="Picture Description App", layout="wide")
     
     st.sidebar.title("Pages")
-    tabs = ["Project description", "Drilling process", "Rate of penetration", "Prediction"]
+    tabs = ["Project description", "Drilling process", "Rate of penetration", "Prediction", "Cross Plot"]
     selected_tab = st.sidebar.radio("Select a page below", tabs)
     
     df_raw = download_data('data/ROP_DataSet.csv')
@@ -155,6 +156,21 @@ def main():
         if is_submitted:
             st.success("The predicted rate of penetration for above provided data is below:")
             st.metric('', f'{round(score,2)} ft/hr')
+    elif selected_tab == "Cross Plot":
+        st.title("Cross Plot")
+        st.write("This is a cross plot graph:")
+
+        # Generate random data for demonstration
+        x = np.random.randn(100)
+        y = np.random.randn(100)
+
+        # Create the cross plot graph using Matplotlib
+        fig, ax = plt.subplots()
+        ax.scatter(x, y)
+        ax.set_xlabel("X")
+        ax.set_ylabel("Y")
+        ax.set_title("Cross Plot")
+        st.pyplot(fig)
 
         
     else:
