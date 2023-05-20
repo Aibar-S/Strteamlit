@@ -23,27 +23,17 @@ def main():
             "Part C": "Description of Part C.",
         }
         
-        # Display the arrows and names
-        arrow_start_points = [(100, 200), (300, 400), (500, 600)]  # Replace with the coordinates of your arrows
-        arrow_end_points = [(150, 250), (350, 450), (550, 650)]  # Replace with the coordinates of your arrows
-        part_names = list(parts.keys())
-        
-        for i, start_point in enumerate(arrow_start_points):
-            col1, col2, col3 = st.columns([0.4, 0.1, 0.5])
+        # Display the part names and descriptions
+        for part_name, description in parts.items():
+            col1, col2 = st.columns([0.4, 0.6])
             
             with col1:
-                st.write(part_names[i])
+                st.write(part_name)
             
             with col2:
-                st.write("->")
-            
-            with col3:
-                # Add an empty space to reserve space for the description
-                st.empty()
-                
                 # Get the description of the part when its name is clicked
-                if col1.button(part_names[i]):
-                    st.write(parts[part_names[i]])
+                if st.button(part_name):
+                    st.write(description)
     
     else:
         st.title("About")
