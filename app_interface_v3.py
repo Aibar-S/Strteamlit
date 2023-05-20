@@ -61,7 +61,7 @@ def main():
     y, X, scaler = preprocess_data(df_raw)
         
     if selected_tab == "Drilling process":
-        st.title("Drliing process explained")
+        st.title("Drilling process explained")
         st.write("""
         - A drilling bit is attached to the end of a long string of jointed, hollow drill pipe.
         - The whole assembly is rotated by a motorized turntable at the surface, the rotary table.
@@ -72,7 +72,7 @@ def main():
         - It should be dense enough to overbalance any high-pressure formations encountered while drilling.
         - If it fails in this last action, the fluid in the formation will displace the mud up the hole and hydrocarbons could exit at the surface and a blowout results. """)
         
-        picture_url = 'drilling_rig.JPG'  # Replace with the URL of your picture
+        picture_url = 'Pictures/Drilling_pic_1.JPG'  # Replace with the URL of your picture
         st.image(picture_url, use_column_width=False)
         
         st.write("Click on the buttons to view the description of each part.")
