@@ -164,6 +164,7 @@ def main():
         x1 = df_raw["Rate Of Penetration"]
         y1 = df_raw["Hole Depth"]
 
+        model = download_model(X,y)
         x2 = model.predict(X)[0]
         
         #x2 = df_raw["Rate Of Penetration"]
