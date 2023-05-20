@@ -55,7 +55,7 @@ def main():
     
     st.sidebar.title("Pages")
     tabs = ["Project description", "Drilling process", "Rate of penetration", "Prediction"]
-    selected_tab = st.sidebar.selectbox("Select a page below", tabs)
+    selected_tab = st.sidebar.radio("Select a page below", tabs)
     
     df_raw = download_data('data/ROP_DataSet.csv')
     y, X, scaler = preprocess_data(df_raw)
