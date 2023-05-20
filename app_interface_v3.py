@@ -159,7 +159,19 @@ def main():
         
     else:
         st.title("Project description")
-        st.write("This app was created by [Your Name] as a Streamlit exercise.")
+        st.write("""
+        - What is the Rate of Penetration (**:blue[ROP]**)?
+          The Rate of Penetration is defined as the speed at which a drilling bit breaks a formation to deepen the borehole.
+          
+        - Why **:blue[ROP]** is important?
+          The **:blue[ROP]** is an important parameter of drilling activities because an increase in **:blue[ROP]** will improve the economics of the drilling operation.
+          
+        - How to achieve high **:blue[ROP]**?
+          The improvement of the **:blue[ROP]** efficiency is achieved by optimizing the drilling parameters of the formations being penetrated as well as borehole conditions.
+          Therefore, well-site engineers must make rational decisions based on a combination of offset-well analysis and real-time live well feed to ascertain the highest feasible **:blue[ROP]**.
+
+        - Why to predict **:blue[ROP]**?
+          **:blue[ROP]** prediction can assist precise planning of drilling operations and can reduce drilling costs by decreasing drilling time.""")
     
 if __name__ == "__main__":
     main()
